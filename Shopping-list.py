@@ -12,7 +12,7 @@ listbox = None
 combobox_category = None
 combobox_filter = None
 filename = "shopping_list.json"
-categories = ["Grocery", "Stationery", "Electronics", "Household", "Clothing", "Other", "All"]
+categories = ["Grocery", "Stationery", "Electronics", "Household", "Clothing", "Food Order", "Other", "All"]
 
 # Function to load shopping list from a JSON file
 def load_list():
@@ -142,45 +142,45 @@ def main():
     load_list()  # Load the shopping list at startup
     root = tk.Tk()
     root.title("Shopping List")
-    root.configure(bg="pink")
+    root.configure(bg="#f7f7f7")  # Light gray background
 
-    frame_logo = tk.Frame(root, bg="#e6ffe6")
+    frame_logo = tk.Frame(root, bg="#4CAF50")  # Green logo frame
     frame_logo.pack(padx=10, pady=10, fill='x')
 
-    label_logo = tk.Label(frame_logo, text="SHOPPING LIST", font=("Helvetica", 24, "bold"), bg="#e6ffe6", fg="#006600")
+    label_logo = tk.Label(frame_logo, text="SHOPPING LIST", font=("Helvetica", 24, "bold"), bg="#4CAF50", fg="white")
     label_logo.pack()
 
     # Main Input Frame
-    frame = tk.Frame(root, bg="#007FFF")
+    frame = tk.Frame(root, bg="#E8F5E9")  # Light green frame
     frame.pack(padx=10, pady=10, fill='both', expand=True)
 
-    label_item = tk.Label(frame, text="Item:", bg="#f0f0f0", font=("Arial", 12))
+    label_item = tk.Label(frame, text="Item:", bg="#E8F5E9", font=("Arial", 12))
     label_item.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
     entry_item = tk.Entry(frame, font=("Arial", 12))
     entry_item.grid(row=0, column=1, padx=5, pady=5)
 
-    label_amount = tk.Label(frame, text="Amount:", bg="#f0f0f0", font=("Arial", 12))
+    label_amount = tk.Label(frame, text="Amount:", bg="#E8F5E9", font=("Arial", 12))
     label_amount.grid(row=1, column=0, padx=5, pady=5, sticky="e")
 
     entry_amount = tk.Entry(frame, font=("Arial", 12))
     entry_amount.grid(row=1, column=1, padx=5, pady=5)
 
-    label_price = tk.Label(frame, text="Price ($):", bg="#f0f0f0", font=("Arial", 12))
+    label_price = tk.Label(frame, text="Price ($):", bg="#E8F5E9", font=("Arial", 12))
     label_price.grid(row=2, column=0, padx=5, pady=5, sticky="e")
 
     entry_price = tk.Entry(frame, font=("Arial", 12))
     entry_price.grid(row=2, column=1, padx=5, pady=5)
 
     # Category dropdown
-    label_category = tk.Label(frame, text="Category:", bg="#f0f0f0", font=("Arial", 12))
+    label_category = tk.Label(frame, text="Category:", bg="#E8F5E9", font=("Arial", 12))
     label_category.grid(row=3, column=0, padx=5, pady=5, sticky="e")
 
     combobox_category = ttk.Combobox(frame, values=categories[:-1], font=("Arial", 12), state="readonly")  # Exclude "All"
     combobox_category.grid(row=3, column=1, padx=5, pady=5)
 
     # Filter dropdown
-    label_filter = tk.Label(frame, text="Filter By:", bg="#f0f0f0", font=("Arial", 12))
+    label_filter = tk.Label(frame, text="Filter By:", bg="#E8F5E9", font=("Arial", 12))
     label_filter.grid(row=4, column=0, padx=5, pady=5, sticky="e")
 
     combobox_filter = ttk.Combobox(frame, values=categories, font=("Arial", 12), state="readonly")
@@ -189,9 +189,8 @@ def main():
     combobox_filter.bind("<<ComboboxSelected>>", lambda e: filter_items())
 
     # Buttons with styles
-    button_add = tk.Button(frame, text="Add Item", font=("Arial", 12), bg="#b3ffb3", fg="black", command=add_item)
-    button_add.grid(row=5, column=0, padx=5, pady=5, sticky="we")
-
+    button_add = tk.Button(frame, text="Add Item", font=("Arial", 12), bg="#4CAF50", fg="white", command=add_item)
+    button_add.grid(row=5, column=0, padx=5, pady=5)
     button_edit = tk.Button(frame, text="Edit Item", font=("Arial", 12), bg="#ffcc99", fg="black", command=edit_item)
     button_edit.grid(row=5, column=1, padx=5, pady=5, sticky="we")
 
